@@ -6,8 +6,8 @@
 
 
 function esc( $data ) {
-	$data = strip_tags( $data );
-	$data = htmlspecialchars( $data );
+	$data = strip_tags( $data ); //Убирает все теги из строки
+	$data = htmlspecialchars( $data ); //преобразует специальные символы в HTML сущности
 
 	return $data;
 }
@@ -24,6 +24,7 @@ function check_form() {
 	$errors = array();
 
 	// если осуществляется передача данных
+    // глобальная переменная
 	if ( ! empty( $_POST ) ) {
 		$data = $_POST;
 
