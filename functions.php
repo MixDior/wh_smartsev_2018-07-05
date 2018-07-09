@@ -64,7 +64,7 @@ function the_errors() {
 	}
 }
 
-
+/*
 function register( $data ) {
 	foreach ( $data as $key => $value ) {
 		$data[ $key ] = esc( $data[ $key ] );
@@ -82,6 +82,24 @@ function register( $data ) {
 
 	file_put_contents( 'users.txt', json_encode( $data ) . "\n" );
 	header( 'location: ?register=success' );
+	fclose('user.txt');
+}
+*/
+//Поочередно получаем строки и выводим в браузер
+function readFile()
+{
+    $descriptor = fopen('users.txt', 'r');
+    $p_str=array();
+    if ($descriptor) {
+        while (($string = fgets($descriptor))) {
+            $p_str[]= $string;
+        }
+        fclose($descriptor);
+
+    } else {
+        echo 'Невозможно открыть указанный файл';
+    }
+    return $p_str;
 }
 
 /*
